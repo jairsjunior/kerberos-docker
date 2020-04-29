@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+    kerberos: 
+        image: jairsjunior/kerberos-docker
+        build: .
+        hostname: kerberos
+        container_name: kerberos
+        environment: 
+            - REALM=KERBEROS.KERBEROS-DOCKER_DEFAULT
+            - DOMAIN_REALM=kerberos.kerberos-docker_default
+            - KERB_MASTER_KEY=masterkey
+            - KERB_ADMIN_USER=admin
+            - KERB_ADMIN_PASS=admin
+            - SEARCH_DOMAINS=search.consul kerberos.kerberos-docker_default
+        volumes: 
+            - ./kerberos-data:/volumes/kerberos
+            - ./kerberos-keytabs:/volumes/keytabs
+            - ./kerberos-users:/volumes/users
