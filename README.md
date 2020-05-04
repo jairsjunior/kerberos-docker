@@ -38,7 +38,8 @@ users.csv file example
 kafka,broker.kafka-kerberos_default,kafka_broker
 kafka,zookeeper.kafka-kerberos_default,kafka_client1
 kafka,schema-registry.kafka-kerberos_default,kafka_schema-registry
-kafka,rest-proxy.kafka-kerberos_default,kafka_rest-proxy
+kafka,rest-proxy.kafka-kerberos_default,kafka_rest-proxy,test
+
 ```
 
 ## Copyright

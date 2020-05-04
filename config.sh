@@ -92,9 +92,14 @@ create_admin_user() {
 # $1 - User
 # $2 - Host
 # $3 - Keytable file name 
+# $4 - password
 create_user() {
     if [ ! -f /volumes/keytabs/$3.keytab ]; then
+      if [ "$4" == "" ]; then
         kadmin.local -q "addprinc -randkey $1/$2@$REALM"
+      else
+        kadmin.local -q "addprinc -pw $4 $1/$2@$REALM"
+      fi
         kadmin.local -q "ktadd -k /volumes/keytabs/$3.keytab $1/$2@$REALM"
     else
         echo "Keytab already exists!"
@@ -104,9 +109,9 @@ create_user() {
 create_users() {
     IFS=","
     if [ -f /volumes/users/users.csv ]; then
-        while read f1 f2 f3
+        while read f1 f2 f3 f4
         do
-            create_user $f1 $f2 $f3
+            create_user $f1 $f2 $f3 $f4
         done < /volumes/users/users.csv
     else
         echo "File not found to create users"
