@@ -97,10 +97,10 @@ create_user() {
     if [ ! -f /volumes/keytabs/$3.keytab ]; then
       if [ "$4" == "" ]; then
         kadmin.local -q "addprinc -randkey $1/$2@$REALM"
+        kadmin.local -q "ktadd -k /volumes/keytabs/$3.keytab $1/$2@$REALM"
       else
         kadmin.local -q "addprinc -pw $4 $1/$2@$REALM"
       fi
-        kadmin.local -q "ktadd -k /volumes/keytabs/$3.keytab $1/$2@$REALM"
     else
         echo "Keytab already exists!"
     fi

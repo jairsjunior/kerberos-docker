@@ -7,12 +7,12 @@ services:
         hostname: kerberos
         container_name: kerberos
         environment: 
-            - REALM=KERBEROS.KERBEROS-DOCKER_DEFAULT
-            - DOMAIN_REALM=kerberos.kerberos-docker_default
+            - REALM=KERBEROS
+            - DOMAIN_REALM=kerberos
             - KERB_MASTER_KEY=masterkey
             - KERB_ADMIN_USER=admin
             - KERB_ADMIN_PASS=admin
-            - SEARCH_DOMAINS=search.consul kerberos.kerberos-docker_default
+            - SEARCH_DOMAINS=search.consul kerberos
         volumes: 
             - ./kerberos-data:/volumes/kerberos
             - ./kerberos-keytabs:/volumes/keytabs

@@ -33,12 +33,17 @@ services:
 At volume folder `kerberos-users` you can add a users.csv file that will create all the users
 on that file if the keytab file aren't exists.
 
+### CSV File Format
+username,hostname,keytab_filename,password
+
+`If you send password keytab file will not be generated`
+
 users.csv file example
 ```
-kafka,broker.kafka-kerberos_default,kafka_broker
-kafka,zookeeper.kafka-kerberos_default,kafka_client1
-kafka,schema-registry.kafka-kerberos_default,kafka_schema-registry
-kafka,rest-proxy.kafka-kerberos_default,kafka_rest-proxy,test
+kafka,broker,kafka_broker
+kafka,zookeeper,kafka_client1
+kafka,schema-registry,kafka_schema-registry
+kafka,rest-proxy,,test
 
 ```
 
